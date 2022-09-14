@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add user</title>
+    <style>
+        td {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            padding: 10px 5px;
+            border-style: solid;
+            border-width: 1px;
+            overflow: hidden;
+            word-break: normal;
+            border-color: #ccc;
+            color: #333;
+            background-color: rgba(255, 255, 240);
+        }
+
+        .buttonAdd {
+            border-width: 1px;
+            background: rgba(152, 251, 152);
+            position: relative;
+            left: 50%;
+            transform: translate(-50%, 0);
+        }
+
+        .buttonLogout {
+            border-width: 1px;
+            padding: 5px;
+            background-color: rgba(220, 220, 220);
+        }
+
+        div {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            color: rgba(255, 99, 71);
+        }
+    </style>
+</head>
+<body>
+<h1>Добавить пользователя</h1>
+<form action="#" th:method="POST" th:action="@{/admin}" th:object="${user}" id="id">
+    <table>
+        <tr>
+            <td>
+                <label for="username">Логин</label>
+                <input type="text" th:field="*{username}" id="username"/>
+            </td>
+        </tr>
+
+        <br>
+
+        <tr>
+            <td>
+                <label for="password">Пароль</label>
+                <input type="password" th:field="*{password}" id="password"/>
+            </td>
+        </tr>
+        <br>
+
+
+        <tr>
+            <td>
+                <label for="firstName">Имя</label>
+                <input type="text" th:field="*{firstName}" id="firstName"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="lastName">Фамилия</label>
+                <input type="text" th:field="*{lastName}" id="lastName"/>
+            </td>
+            <td>
+                <label>Роль:
+                    <select size="2" multiple name="role" required="required">
+                        <option selected="selected" value="1">USER</option>
+                        <option value="2">ADMIN</option>
+                    </select>
+                </label>
+            </td>
+            <td>
+                <input class="buttonAdd" type="submit" value="Добавить пользователя"/>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <button class="buttonLogout" onclick="window.location.href = '/logout';">Выйти</button>
+
+</body>
+</html>

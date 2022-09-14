@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
+      lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>User</title>
+    <style>
+        table th, table td, form {
+            padding: 10px 5px;
+            font-family: sans-serif;
+            font-size: 14px;
+            border-style: solid;
+            border-width: 1px;
+            background-color: rgba(255, 255, 240);
+        }
+        .buttonLogout {
+            border-width: 1px;
+            padding: 5px;
+            background-color: rgba(220, 220, 220);
+        }
+    </style>
+</head>
+<body>
+<h1>Данные пользователя</h1>
+<table border="1" >
+    <tr>
+        <th th:width="120">ID</th>
+        <th th:width="120">Имя</th>
+        <th th:width="120">Фамилия</th>
+    </tr>
+    <td th:text="${user.getId()}">ID</td>
+    <td th:utext="${user.getFirstName()}">Имя</a></td>
+    <td th:utext="${user.getLastName()}">Фамилия</td>
+
+
+
+
+
+</table>
+<br>
+<button class="buttonLogout" onclick="window.location.href = '/logout';">Выйти</button>
+</body>
+</html>

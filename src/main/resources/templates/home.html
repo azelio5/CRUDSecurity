@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>All users</title>
+    <style>
+        table th, table td {
+            padding: 10px 5px;
+            font-family: sans-serif;
+            font-size: 14px;
+            border-style: solid;
+            border-width: 1px;
+            background-color: rgba(255, 255, 240);
+        }
+        .buttonAdd {
+            padding: 5px;
+            border-width: 1px;
+            background: rgba(152, 251, 152);
+        }
+        .buttonDelete {
+            border-width: 1px;
+            background: rgba(255, 99, 71);
+        }
+        .buttonEdit {
+            border-width: 1px;
+            background: rgba(255, 226, 64);
+        }
+        .buttonLogout {
+            padding: 5px;
+            border-width: 1px;
+            background-color: rgba(220, 220, 220);
+        }
+    </style>
+
+</head>
+<body>
+<br>
+<form th:method="POST" action="/admin/new">
+    <input class="buttonAdd" type="submit" value="Добавить пользователя">
+</form>
+<br>
+<h1>Список пользователей</h1>
+<table border="1">
+    <tr>
+        <th th:width="50">ID</th>
+        <th th:width="120">Имя</th>
+        <th th:width="120">Фамилия</th>
+        <th th:width="70">Редактировать</th>
+        <th th:width="70">Удалить</th>
+    </tr>
+    <tr th:each="user : ${allUsers}">
+        <td th:text="${user.getId()}">ID</td>
+        <td th:utext="${user.getFirstName()}">Имя</a></td>
+        <td th:utext="${user.getLastName()}">Фамилия</td>
+        <td>
+            <form th:action="@{/admin/edit/{id}(id=${user.id})}">
+                <input class="buttonEdit" type="submit" value="Редактировать"/>
+            </form>
+        </td>
+        <td>
+            <form th:method="DELETE" th:action="@{/admin/delete/{id}(id=${user.id})}">
+                <input class="buttonDelete" type="submit" value="Удалить"/>
+            </form>
+        </td>
+    </tr>
+</table>
+<br>
+<button class="buttonLogout" onclick="window.location.href = '/logout';">Выйти</button>
+</body>
+</html>
